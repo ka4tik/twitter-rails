@@ -22,6 +22,14 @@ module SessionsHelper
     @current_user ||= user_from_remember_token
   end
 
+  def deny_access
+    redirect_to signin_path,:notice=>"You need to signin to view this page";
+  end
+
+  def current_user?(user)
+    user==current_user
+  end
+
   private
   def user_from_remember_token
     User.authenticate_with_salt(*remember_token)
