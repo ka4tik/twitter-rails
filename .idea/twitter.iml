@@ -148,6 +148,7 @@
     <orderEntry type="library" scope="PROVIDED" name="minitest (v4.7.5, rbenv: 2.0.0-p451) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="multi_json (v1.10.1, rbenv: 2.0.0-p451) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="polyglot (v0.3.5, rbenv: 2.0.0-p451) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="protected_attributes (v1.0.7, rbenv: 2.0.0-p451) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rack (v1.5.2, rbenv: 2.0.0-p451) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rack-test (v0.6.2, rbenv: 2.0.0-p451) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rails (v4.0.4, rbenv: 2.0.0-p451) [gem]" level="application" />
