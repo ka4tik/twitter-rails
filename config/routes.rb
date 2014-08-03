@@ -1,5 +1,5 @@
 Twitter::Application.routes.draw do
-  get "users/new"
+  resources :users
   get '/contact', :to => 'pages#contact'
   get '/about', :to=> 'pages#about'
   get '/signup', :to => 'users#new'
@@ -18,7 +18,6 @@ Twitter::Application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-
   # Example resource route with options:
   #   resources :products do
   #     member do
