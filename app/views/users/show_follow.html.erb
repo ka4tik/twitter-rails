@@ -1,0 +1,14 @@
+<table>
+  <tr>
+    <%= will_paginate %>
+    <ul class="users">
+      <% @users.each do |user| %>
+          <li>
+            <%= gravator_for user,:size =>30 %>
+            <%= link_to user.name,user %>
+          </li>
+      <% end %>
+    </ul>
+    <%= will_paginate %>
+  </tr>
+</table>
