@@ -1,6 +1,7 @@
 Twitter::Application.routes.draw do
   resources :sessions,:only =>[:new,:create,:destroy]
   resources :users
+  resource :microposts, :only=>[:create,:destroy]
   get '/contact', :to => 'pages#contact'
   get '/about', :to=> 'pages#about'
   get '/signup', :to => 'users#new'

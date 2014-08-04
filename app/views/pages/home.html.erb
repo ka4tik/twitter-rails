@@ -1,4 +1,15 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-
+<% if signed_in? %>
+    <table>
+      <tr>
+        <td>
+          <h1>What's up</h1>
+          <%= render 'shared/micropost_form'%>
+        </td>
+        <td class="sidebar">
+          <%= render 'shared/user_info' %>
+        </td>
+      </tr>
+    </table>
+<% else %>
 <%= link_to "Sign up now!", signup_path %>
+<% end %>
