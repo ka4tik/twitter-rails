@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :name, :password,:admin
   #todo:setting :admin attr_accessible is a security loophole
+  has_many :microposts, :dependent => :destroy
 
   email_regex= /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
 

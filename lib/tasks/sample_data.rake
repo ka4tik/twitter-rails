@@ -13,5 +13,10 @@ namespace :db do
       password="foobar"
       User.create!(:name=>name,:email=>email,:password=>password)
     end
+    User.all[1..6].each do |user|
+      50.times do
+        user.microposts.create!(:content=>Faker::Lorem.sentence(5))
+      end
+    end
   end
 end
