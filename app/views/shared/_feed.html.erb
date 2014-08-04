@@ -1,0 +1,17 @@
+<% if @feed_items.any? %>
+    <table class="microposts">
+      <% @feed_items.each do |feed_item| %>
+      <tr>
+        <td>
+          <span>
+            <%= link_to feed_item.user.name, feed_item.user %>
+          </span>
+          <span><% feed_item.content %></span>
+          <span>
+            Posted <%= time_ago_in_words(feed_item.created_at) %>
+          </span>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+<% end %>
