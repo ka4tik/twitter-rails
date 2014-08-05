@@ -1,1 +1,6 @@
-section { padding-top: 70px; } /*for navbar*/
+section { padding-top: 50px; } /*for navbar*/
+.feed { background-color: #f5f8fa;}
+.sidebar {background-color: lightyellow}
+.footer{
+    background-color: black;
+}

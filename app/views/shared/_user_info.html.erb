@@ -1,10 +1,18 @@
-<div class="user_info">
+<div class="row">
+  <div class="col-md-12">
+  <div class="row">
+    <div class="col-md-12">
   <a href="<%= user_path(current_user) %>">
-    <span class="user_name">
+    <div class="row">
+      <%= gravator_for current_user %>
       <%= current_user.name %>
-    </span>
-    <span class="microposts">
+    </div>
+    <div class="row">
       <%= pluralize(current_user.microposts.count,"micropost") %>
-    </span>
+    </div>
   </a>
+
+   </div>
+    </div>
+    </div>
 </div>
