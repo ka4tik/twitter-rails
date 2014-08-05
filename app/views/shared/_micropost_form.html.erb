@@ -2,15 +2,13 @@
   <div class="col-md-12"><h1>What's up</h1></div>
 </div>
 <div class="row">
-  <div class="col-md-12">
   <%= form_for(@micropost) do |f| %>
       <%= render 'shared/error_messages', :object => f.object %>
-      <div class="field">
-        <%= f.text_area :content ,:cols => "110", :rows => "3"%>
+      <div class="col-md-10">
+        <%= f.text_area :content ,:cols => "115", :rows => "3"%>
       </div>
-      <div class="actions">
-        <%= f.submit "Submit" %>
+      <div class="col-md-2">
+        <%= f.submit "Submit",:class=>"btn btn-primary" %>
       </div>
   <% end %>
-  </div>
 </div>
