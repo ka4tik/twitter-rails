@@ -1,19 +1,22 @@
-<% if @feed_items.any? %>
-    <%= will_paginate(@feed_items) %>
-    <table class="microposts">
-      <% @feed_items.each do |feed_item| %>
-      <tr>
-        <td>
+<% if feed_items.any? %>
+    <div class="row">
+      <div class="col-md-12">
+      <%= will_paginate(feed_items) %>
+      <% feed_items.each do |feed_item| %>
+      <div class="row">
+        <div class="col-md-12">
           <span>
+            <%= gravator_for feed_item.user %>
             <%= link_to feed_item.user.name, feed_item.user %>
           </span>
           <span><%= feed_item.content %></span>
           <span>
             Posted <%= time_ago_in_words(feed_item.created_at) %>
           </span>
-        </td>
-      </tr>
+        </div>
+      </div>
       <% end %>
-    </table>
-    <%= will_paginate(@feed_items) %>
+    <%= will_paginate(feed_items) %>
+    </div>
+    </div>
 <% end %>
