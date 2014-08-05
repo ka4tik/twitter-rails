@@ -2,33 +2,50 @@
 <html>
 <head>
   <title>Twitter</title>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= stylesheet_link_tag 'bootstrap', :media => 'all' %>
-  <%= javascript_include_tag "bootstrap" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
- <div class="container">
    <header>
-     <%= link_to image_tag("logo.png", :alt =>"Sample App", :class => "round"),pages_home_path  %>
-     <nav class="round">
-       <ul>
-         <li><%= link_to "Home", pages_home_path %></li>
-         <li><%= link_to "Users", users_path %></li>
-
-         <% if signed_in? %>
-             <li><%= link_to "Profile",user_path(current_user) %></li>
-             <li><%= link_to "Settings",edit_user_path(current_user) %></li>
-         <% end %>
-         <% if signed_in? %>
-             <li><%= link_to "Sign out", signout_path %></li>
-          <% else %>
-             <li><%= link_to "Sign in", signin_path %></li>
-          <% end %>
-       </ul>
+     <nav role="navigation" class="navbar navbar-inverse navbar-fixed-top">
+       <div class="container-fluid">
+         <!-- Brand and toggle get grouped for better mobile display -->
+         <div class="navbar-header">
+           <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+             <span class="sr-only">Toggle navigation</span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+           </button>
+           <%= link_to 'Twitter',pages_home_path,:class => "navbar-brand"  %>
+         </div>
+         <!-- Collection of nav links and other content for toggling -->
+         <div id="navbarCollapse" class="collapse navbar-collapse">
+           <ul class="nav navbar-nav">
+             <li class="<%= 'active' if current_page?(pages_home_path) %>"> <%= link_to "Home", pages_home_path %></li>
+             <li class="<%= 'active' if current_page?(users_path) %>"> <%= link_to "Users", users_path %></li>
+             <% if signed_in? %>
+                 <li class="<%= 'active' if current_page?(user_path(current_user)) %>"><%= link_to "Profile",user_path(current_user), :class => "navbar-link" %></li>
+                 <li class="<%= 'active' if current_page?(edit_user_path(current_user)) %>"><%= link_to "Settings",edit_user_path(current_user), :class => "navbar-link" %></li>
+             <% end %>
+           </ul>
+           <ul class="nav navbar-nav navbar-right">
+             <% if signed_in? %>
+                 <li class="<%= 'active' if current_page?(signout_path) %>"><%= link_to "Sign out", signout_path %></li>
+             <% else %>
+                 <li class="<%= 'active' if current_page?(signin_path) %>"><%= link_to "Sign in", signin_path %></li>
+             <% end %>
+           </ul>
+         </div>
+       </div>
      </nav>
+
    </header>
 
    <section>
@@ -40,7 +57,6 @@
 
    <%= render 'layouts/footer' %>
    <%= debug(params) if Rails.env.development? %>
- </div>
 
 </body>
 </html>
