@@ -1,4 +1,5 @@
 <% if @feed_items.any? %>
+    <%= will_paginate(@feed_items) %>
     <table class="microposts">
       <% @feed_items.each do |feed_item| %>
       <tr>
@@ -6,7 +7,7 @@
           <span>
             <%= link_to feed_item.user.name, feed_item.user %>
           </span>
-          <span><% feed_item.content %></span>
+          <span><%= feed_item.content %></span>
           <span>
             Posted <%= time_ago_in_words(feed_item.created_at) %>
           </span>
@@ -14,4 +15,5 @@
       </tr>
       <% end %>
     </table>
+    <%= will_paginate(@feed_items) %>
 <% end %>

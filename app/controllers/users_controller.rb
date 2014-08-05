@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_filter :authenticate, :only => [:edit,:update,:following,:followers]
-  before_filter :correct_user, :only => [:edit,:update,:following,:followers]
+  before_filter :authenticate, :only => [:edit,:update]
+  before_filter :correct_user, :only => [:edit,:update]
   before_filter :admin_user,   :only => [:destroy]
 
   def index
