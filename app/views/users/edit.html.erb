@@ -1,20 +1,24 @@
-<h1>Edit</h1>
-<%= form_for(@user) do |f| %>
-<%= render 'shared/error_messages', :object => f.object %>
-<div class="field">
-    <%= f.label :name %><br/>
-    <%= f.text_field :name %>
-</div>
-<div class="field">
-    <%= f.label :email %><br/>
-    <%= f.text_field :email %>
-</div>
-<div class="field">
-    <%= f.label :password %><br/>
-    <%= f.password_field :password %>
-</div>
-<div class="actions">
-    <%= f.submit "Update" %>
+<div class="container">
+  <h3>Edit Profile Info</h3>
+  <div class="col-xs-4">
+    <%= form_for(@user) do |f| %>
+        <%= render 'shared/error_messages', :object => f.object %>
+        <div class="input-group">
+          <span class="input-group-addon glyphicon glyphicon-user"></span>
+          <%= f.text_field :name ,:class =>"form-control input-lg", :placeholder=>"Name"%>
+        </div>
+        <div class="input-group">
+          <span class="input-group-addon glyphicon glyphicon-envelope"></span>
+          <%= f.text_field :email ,:class =>"form-control input-lg", :placeholder=>"Email"%>
+        </div>
+        <div class="input-group">
+          <span class="input-group-addon glyphicon glyphicon-eye-close"></span>
+          <%= f.password_field :password ,:class =>"form-control input-lg", :placeholder=>"Password"%>
+        </div>
+        <div class="form-group">
+          <%= f.submit "Update",:class =>"btn btn-block btn-warning btn-lg" %>
+        </div>
+    <% end %>
+  </div>
 </div>
 
-<% end %>
