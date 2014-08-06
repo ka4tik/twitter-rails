@@ -16,3 +16,6 @@
 /tmp
 /.idea
 /public/uploads
+*.swp
+*~
+.DS_Store
