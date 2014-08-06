@@ -31,6 +31,7 @@ gem 'protected_attributes'
 gem 'gravatar_image_tag'
 gem 'faker'
 gem 'will_paginate'
+gem 'carrierwave'
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

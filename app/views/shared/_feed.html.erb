@@ -10,6 +10,9 @@
             <%= link_to feed_item.user.name, feed_item.user %>
           </span>
           <span><%= feed_item.content %></span>
+          <% if feed_item.image_url%>
+          <%= image_tag feed_item.image_url, :class => 'feed-image'%>
+          <% end %>
           <span>
             Posted <%= time_ago_in_words(feed_item.created_at) %>
           </span>

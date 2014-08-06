@@ -1,6 +1,10 @@
 section { padding-top: 50px; } /*for navbar*/
 .feed { background-color: #f5f8fa;}
 .sidebar {background-color: lightyellow}
+.feed-image {
+    max-width: 300px;
+    max-height: 200px;
+}
 .footer{
     background-color: black;
 }

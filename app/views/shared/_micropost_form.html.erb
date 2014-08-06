@@ -7,6 +7,7 @@
       <div class="col-md-10">
         <%= f.text_area :content ,:cols => "115", :rows => "3"%>
       </div>
+      <%= f.file_field :image %>
       <div class="col-md-2">
         <%= f.submit "Submit",:class=>"btn btn-primary" %>
       </div>

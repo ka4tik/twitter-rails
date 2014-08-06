@@ -1,9 +1,10 @@
 class Micropost < ActiveRecord::Base
-  attr_accessible :content
+  attr_accessible :content,:image
   belongs_to :user
   validates :content, :presence => true,:length => {:maximum =>140}
   validates :user_id, :presence => true
   default_scope :order => 'microposts.created_at DESC'
+  mount_uploader :image, ImageUploader
 
   scope :from_users_followed_by, lambda {|user| followed_by(user)}
 
