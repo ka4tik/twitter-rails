@@ -4,8 +4,18 @@ class UsersController < ApplicationController
   before_filter :admin_user,   :only => [:destroy]
 
   def index
-    @users=User.paginate(:page=>params[:page])
+    if params[:term]
+      @users=User.where("name like '#{params[:term]}%'").select("id","name","email")
+    else
+      @users=User.paginate(:page=>params[:page])
+    end
+
+    respond_to do |format|
+      format.html
+      format.json {render :json => @users.to_json}
+    end
   end
+
   def new
     @user=User.new
   end

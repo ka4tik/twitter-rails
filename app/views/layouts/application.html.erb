@@ -4,10 +4,37 @@
   <title>Twitter</title>
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-  <%= javascript_include_tag "bootstrap.min", "data-turbolinks-track" => true %>
-
+  <script src="http://code.jquery.com/jquery.js"></script>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <script src="http://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+  <script>
+      $(function() {
+          console.log("here");
+          $("#global_search_box").autocomplete({
+              minLength: 2,
+              source: '<%= users_path(:json) %>',
+              focus: function(event, ui) {
+                  $('#global_search_box').val(ui.item.name);
+                  return false;
+              },
+              select: function(event, ui) {
+                  $('#global_search_box').val(ui.item.name);
+                  $('#hidden_search_user_id').val(ui.item.id);
+                  //this seems like a hack !!
+                  $('#go_button').attr('href',"/users/"+ui.item.id);
+                  return false;
+              }
+
+          }).data( "ui-autocomplete" )._renderItem = function( ul, item ) {
+              console.log(item);
+              return $( "<li>" )
+                      .data( "item.autocomplete", item )
+                      .append( "<a>" + item.name + "<br>" + item.email + "</a>" )
+                      .appendTo( ul );
+          };
+      });
+  </script>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -34,6 +61,14 @@
                  <li class="<%= 'active' if current_page?(user_path(current_user)) %>"><%= link_to "Profile",user_path(current_user), :class => "navbar-link" %></li>
                  <li class="<%= 'active' if current_page?(edit_user_path(current_user)) %>"><%= link_to "Settings",edit_user_path(current_user), :class => "navbar-link" %></li>
              <% end %>
+             <li>
+             <form>
+               <input type="text" id="global_search_box" placeholder="Search Users..">
+               <input id="hidden_search_user_id" name="hidden_search_user_id" type="hidden"/>
+               <a id="go_button" href="<%=pages_home_path%>" class="btn btn-default navbar-btn btn-primary">Go</a>
+             </form>
+             </li>
+
            </ul>
            <ul class="nav navbar-nav navbar-right">
              <% if signed_in? %>
